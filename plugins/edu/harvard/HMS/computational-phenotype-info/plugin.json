@@ -1,0 +1,11 @@
+{
+  "title": "Computational Phenotype Info",
+  "description": "This plugin provides information about a computational phenotype term.",
+  "category": ["Computational Phenotype"],
+  "icons": { "size32x32": "exampleplugin_32x32.gif" },
+  "assetDir": "dist",
+  "plugin_version" : "1.0",
+  "i2b2_version" : "1.8.2",
+  "base": "index.html",
+  "sandbox": true
+}
