@@ -6,6 +6,6 @@
   "assetDir": "dist",
   "plugin_version" : "1.0",
   "i2b2_version" : "1.8.2",
-  "base": "index.html",
+  "base": "dist/index.html",
   "sandbox": true
 }

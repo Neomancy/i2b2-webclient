@@ -12,22 +12,21 @@ import Divider from '@mui/material/Divider';
 import { MaterialSymbol } from 'react-material-symbols';
 
 
-
 const NAVIGATION = [
     {
         segment: 'general',
         title: 'General Info',
-        icon: <MaterialSymbol icon="description" size={32} grade={-25}  />
+        icon: <MaterialSymbol icon="description" size={25} grade={-25}  />
     },
     {
         segment: 'features',
         title: 'Model Features',
-        icon: <MaterialSymbol icon="view_list" size={32} grade={-25}  />
+        icon: <MaterialSymbol icon="view_list" size={25} grade={-25}  />
     },
     {
         segment: 'details',
         title: 'Model Details',
-        icon: <MaterialSymbol icon="area_chart" size={32} grade={-25}  />
+        icon: <MaterialSymbol icon="area_chart" size={25} grade={-25}  />
     },
 ];
 
@@ -82,6 +81,36 @@ function DemoPageContent({ pathname }) {
             </p>
 
 
+            <Divider textAlign="left" sx={{width:'90%', margin:'2rem'}}></Divider>
+
+            <Typography variant="h6" color='primary'>Computational Phenotypes in i2b2</Typography>
+
+            <p>
+                <Typography>A simple approach to addressing the low precision problem of diagnosis codes is to select for patients with more than one occurrence of the code. The idea is that if the patient truly has the diagnosis, it will be coded at multiple clinical encounters. In contrast, if the code was incorrectly entered for the patient, or the code was used for some reason other than to assign a diagnosis to the patient (e.g., to bill for a diagnostic test), then it might only appear once or very few times.</Typography>
+            </p>
+            <p>
+                <Typography>The machine learning based approach to computational phenotypes in i2b2 is based on three innovations:</Typography>
+                <Typography>
+                    <ol>
+                        <li><u>Normalizing for healthcare utilization.</u> The algorithm builds on the idea that patients who truly have a phenotype will have multiple occurrences of the diagnosis code. It extends it by incorporating healthcare utilization, measured by the number of distinct dates in which a patient was assigned a diagnosis code in the EHR. Patients with greater utilization would be expected to have more occurrences of the diagnosis code if they truly had the phenotype. Similarly, patients without the phenotype would also be more likely to have the code by random chance. The machine learning method, called PheNorm, is described in</li>
+                        <li><u>Automating model cutoff (unsupervised clustering) to reduce the need for manual chart review.</u> PheNorm enables ranking patients based on the likelihood that they have the phenotype. This work was further developed with an unsupervised approach to determining a cutoff to assign the phenotype to patients. This greatly reduces the amount of manual chart review needed. Instead of using chart review to fine-tune the cutoff point, it is only needed at the end to determine the accuracy of the algorithm. This method, called multimodal automated phenotyping (MAP), is described in</li>
+                        <li><u>Automating feature selection rather than relying on clinical experts.</u> PheNorm and MAP only combine healthcare utilization and the phenotypes’ diagnosis, either coded in the EHR or appearing by name in clinical notes. An additional algorithm, clinical knowledge extraction via sparse embedding regression (KESER), identifies related features that can also be incorporated into KOMAP to create more accurate and robust computational phenotypes. This is done automatically, by looking for features in the EHR that often co-occur with the diagnosis code, without the need for clinical experts to generate these feature lists manually.</li>
+                    </ol>
+                </Typography>
+            </p>
+            <p>
+            </p>
+            <p>
+                <Typography></Typography>
+            </p>
+            <p>
+                <Typography></Typography>
+            </p>
+
+
+
+            <Divider textAlign="left" sx={{width:'90%', margin:'2rem'}}></Divider>
+
             <Typography>Dashboard content for {pathname}</Typography>
 
 
@@ -98,7 +127,7 @@ DemoPageContent.propTypes = {
 function RootLayout(props) {
     const { window } = props;
 
-    const [pathname, setPathname] = React.useState('/dashboard');
+    const [pathname, setPathname] = React.useState('/general');
 
     const router = React.useMemo(() => {
         return {
@@ -113,7 +142,7 @@ function RootLayout(props) {
         <AppProvider
             navigation={NAVIGATION}
             branding={{
-                logo: <img src="https://mui.com/static/logo.png" alt="MUI logo" />,
+                logo: '',
                 title: 'Computed Phenotype Information',
             }}
             router={router}
